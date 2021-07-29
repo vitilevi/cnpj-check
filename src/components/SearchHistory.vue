@@ -15,7 +15,7 @@ import { getSessionStorage } from '../services/handleSessionStorage';
   export default {
     data: function() {
       return {
-        sessionStorage: ['aoba'],
+        sessionStorage: [],
       }
     },
     mounted() {
@@ -34,7 +34,6 @@ import { getSessionStorage } from '../services/handleSessionStorage';
   flex-direction: column;
   justify-items: center;
   padding: 20px;
-  /* background-color: #fafafa; */
   border-radius: 8px;
 }
 
