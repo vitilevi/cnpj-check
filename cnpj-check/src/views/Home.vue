@@ -1,23 +1,27 @@
 <template>
-  <div class="hello">
+  <div class="home-app">
     <h2>Insira um CNPJ Válido</h2>
     <input type="text" :value="cnpjInput" maxlength="18" minlength="14" @keyup="handleInput" placeholder="88.415.345/0001-57" />
     <p>Esse CNPJ é válido? <strong>{{isCnpjValid}}</strong></p>
-    <button @click="handleRedirect" :disabled="!validForSearch">Consultar</button>
+    <button class="btn main-colors" @click="handleRedirect" :disabled="!validForSearch">Consultar</button>
   </div>
+  <SearchHistory />
 </template>
 
 <script>
 import { validate }  from 'cnpj';
+import SearchHistory from '../components/SearchHistory.vue';
 
 export default {
-  name: 'HelloWorld',
   data: function() {
     return {
       validForSearch: false,
       isCnpjValid: 'Não',
       cnpjInput: '',
     }
+  },
+  components: {
+    SearchHistory
   },
   methods: {
     handleInput({target: { value }}) {
@@ -40,23 +44,50 @@ export default {
 </script>
 
 <style>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  /* list-style-type: none;
-  padding: 0; */
-}
 li {
   text-align: left;
-  /* display: inline-block;
-  margin: 0 10px; */
 }
+
 a {
-  color: #42b983;
   text-decoration: none;
-  background-color: aliceblue;
   padding: 7px;
   border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  width: 175px;
+  height: 20px;
+  outline-color: #42b983;
+}
+
+.home-app {
+  background-color: #fafafa;
+  width: 350px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-colors {
+  color: #42b983;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.main-colors:active {
+  color: #42b983;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 7px;
+  font-weight: 600;
+  width: 150px;
+}
+
+.btn:disabled {
+  opacity: 40%;
 }
 </style>

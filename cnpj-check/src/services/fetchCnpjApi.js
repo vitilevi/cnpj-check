@@ -1,3 +1,5 @@
+import { setSessionStorage } from "./handleSessionStorage";
+
 const fetchApi = async (cnpj) => {
   const header = {
     "method": "GET",
@@ -10,11 +12,16 @@ const fetchApi = async (cnpj) => {
   return fetch(apiUrl, header)
     .then((response) => response.json())
     .then((result) => {
+      if(!result.error){
+        setSessionStorage(cnpj);
+      } 
       const obj = result;
       const deleteKeys = ['maps', 'files', 'last_update'];
       deleteKeys.forEach((el) => delete obj[el]);
       Object.keys(obj).forEach((item) => {
-        if(obj[item] === null || obj[item].length === 0) delete obj[item]
+        if(obj[item] === null || obj[item].length === 0) {
+          delete obj[item];
+        }
       });
       return obj;
     })

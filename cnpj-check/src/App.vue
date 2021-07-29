@@ -1,7 +1,4 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Nova consulta</router-link>
-  </div>
   <router-view/>
 </template>
 
