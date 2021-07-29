@@ -8,6 +8,7 @@ const routes = [
     name: 'Home',
     component: Home,
   },
+  // configura rota dinâmica para ser possível consultar cnpj diretamente pela url também
   {
     path: '/details/:cnpj',
     name: 'Details',

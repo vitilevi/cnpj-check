@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     handleInput({target: { value }}) {
+      // checa se o cnpj inserido é válido e retorna para o estado local
       this.cnpjInput = value;
       const check = validate(this.cnpjInput)
       if(check) {
@@ -36,6 +37,7 @@ export default {
       }
     },
     handleRedirect() {
+      // Remove qualquer pontuação do cnpj para fazer o redirecionamento para a view a partir do cnpj inserido
       const cnpj = this.cnpjInput.replace(/[^0-9]/g, '')
       this.$router.push(`/details/${cnpj}`)
     },

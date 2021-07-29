@@ -1,6 +1,7 @@
 import { setSessionStorage } from "./handleSessionStorage";
 
 const fetchApi = async (cnpj) => {
+  // Confiuração do cabeçalho para a requisição api com o token de autorização
   const header = {
     "method": "GET",
     "headers": {
@@ -12,10 +13,12 @@ const fetchApi = async (cnpj) => {
   return fetch(apiUrl, header)
     .then((response) => response.json())
     .then((result) => {
+      // Se for um resultado válido ele já salva o cnpj na SessionStorage
       if(!result.error){
         setSessionStorage(cnpj);
       } 
       const obj = result;
+      // Remove itens do objeto que fazem parte da API, e não do cnpj consultado
       const deleteKeys = ['maps', 'files', 'last_update'];
       deleteKeys.forEach((el) => delete obj[el]);
       Object.keys(obj).forEach((item) => {
