@@ -32,7 +32,6 @@
             <!-- Verifica se o tipo de valor recebido do array é um objeto para tratar renderização -->
             <ul class="obj-wrapper" :key="index" v-for="(valueArray, index) in mainValue">
               <li class="obj" :key="index" v-for="(value, key, index) in valueArray">
-
                 <span class="second-key">{{key}}:</span>
                 <span class="second-value">{{value}}</span>
               </li>
@@ -96,7 +95,7 @@ import { format }  from 'cnpj';
         isLoading: true,
       }
     },
-
+    // recebe a props de cnpj via rota
     props: {
       cnpj: {
         type: String,
@@ -107,6 +106,7 @@ import { format }  from 'cnpj';
 </script>
 
 <style>
+
 .main-key, 
 .second-key {
   display: inline-block;

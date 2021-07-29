@@ -10,5 +10,5 @@ echo 'www.vmfaria.com/cnpj-check' > CNAME
 git init
 git add -A
 git commit -m 'deploy'
-git push -f git@github.com:vitilevi/cnpj-check.git main:gh-pages
+git push -f git@github.com:vitilevi/cnpj-check.git master:gh-pages
 cd -
