@@ -1,3 +1,5 @@
-// module.exports = {
-//   publicPath: '/cnpj-check/'
-// }
+module.exports = {
+  publicPath: process.env.NODE_ENV === 'production'
+  ? '/cnpj-check/'
+  : '/'
+}
